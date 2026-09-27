@@ -1,0 +1,33 @@
+/* Reserva de apresentação — Design System e layout entram em etapas posteriores. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+input.is-preenchido,
+input.is-sucesso {
+  outline: 2px solid #0b6e4f;
+}
+
+input.is-erro {
+  outline: 2px solid #c0392b;
+}
+
+.msg-campo {
+  display: block;
+  color: #c0392b;
+  font-size: 0.875rem;
+}
+
+#status-cadastro {
+  display: none;
+}
+
+form.is-enviado #status-cadastro {
+  display: block;
+}

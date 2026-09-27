@@ -1,0 +1,7 @@
+{
+  "name": "frontend-4",
+  "private": true,
+  "scripts": {
+    "start": "node src/server.js"
+  }
+}
