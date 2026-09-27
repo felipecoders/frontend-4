@@ -1,4 +1,30 @@
 /* Reserva de apresentação. Design System e layout entram em etapas posteriores. */
+:root {
+  --cor-fundo: #f7f8f7;
+  --cor-texto: #14221c;
+  --cor-link: #0a4d38;
+  --cor-erro: #8b1e16;
+  --cor-foco: #0b6e4f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cor-fundo: #121212;
+    --cor-texto: #f2f2f2;
+    --cor-link: #8fdec0;
+    --cor-erro: #ffb4a8;
+    --cor-foco: #8fdec0;
+  }
+}
+
+html[data-tema="alto-contraste"] {
+  --cor-fundo: #000000;
+  --cor-texto: #ffffff;
+  --cor-link: #ffff00;
+  --cor-erro: #ff6b6b;
+  --cor-foco: #ffff00;
+}
+
 *,
 *::before,
 *::after {
@@ -7,6 +33,18 @@
 
 body {
   margin: 0;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+a {
+  color: var(--cor-link);
+}
+
+button {
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+  border: 2px solid var(--cor-texto);
 }
 
 .skip-link {
@@ -15,6 +53,8 @@ body {
   top: 0;
   z-index: 2;
   padding: 0.5rem 0.75rem;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
   transform: translateY(-120%);
 }
 
@@ -27,22 +67,22 @@ button:focus-visible,
 input:focus-visible,
 .skip-link:focus-visible,
 #app:focus {
-  outline: 2px solid #0b6e4f;
+  outline: 2px solid var(--cor-foco);
   outline-offset: 2px;
 }
 
 input.is-preenchido,
 input.is-sucesso {
-  outline: 2px solid #0b6e4f;
+  outline: 2px solid var(--cor-foco);
 }
 
 input.is-erro {
-  outline: 2px solid #c0392b;
+  outline: 2px solid var(--cor-erro);
 }
 
 .msg-campo {
   display: block;
-  color: #c0392b;
+  color: var(--cor-erro);
   font-size: 0.875rem;
 }
 
