@@ -68,6 +68,7 @@ export function validarCampo(campo) {
   campo.classList.toggle("is-erro", !ok);
   campo.classList.toggle("is-sucesso", ok);
   campo.classList.toggle("is-preenchido", campo.value.trim() !== "");
+  campo.setAttribute("aria-invalid", ok ? "false" : "true");
 
   var msg = document.querySelector("[data-erro='" + campo.id + "']");
   if (msg) {

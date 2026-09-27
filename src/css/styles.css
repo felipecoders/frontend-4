@@ -1,4 +1,4 @@
-/* Reserva de apresentação — Design System e layout entram em etapas posteriores. */
+/* Reserva de apresentação. Design System e layout entram em etapas posteriores. */
 *,
 *::before,
 *::after {
@@ -7,6 +7,23 @@
 
 body {
   margin: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  padding: 0.5rem 0.75rem;
+  transform: translateY(-120%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+#app:focus {
+  outline: none;
 }
 
 input.is-preenchido,
