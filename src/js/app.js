@@ -1,5 +1,6 @@
 import { onInput, onSubmit } from "./cadastro.js";
 import { getApp, navegar, render } from "./router.js";
+import { iniciarTema } from "./tema.js";
 
 var app = getApp();
 if (!app) {
@@ -21,4 +22,5 @@ app.addEventListener("input", onInput);
 window.addEventListener("popstate", function () {
   render({ focar: true });
 });
+iniciarTema();
 render();
