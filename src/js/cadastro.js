@@ -41,7 +41,7 @@ function pintarListaCadastros() {
   }
   lista.innerHTML = cadastros
     .map(function (item) {
-      return `<li>${item.nome} — ${item.email}</li>`;
+      return `<li>${item.nome} (${item.email})</li>`;
     })
     .join("");
 }
@@ -88,6 +88,7 @@ export function onSubmit(event) {
   form.reset();
   form.querySelectorAll("input").forEach(function (campo) {
     campo.classList.remove("is-erro", "is-sucesso", "is-preenchido");
+    campo.setAttribute("aria-invalid", "false");
   });
   form.querySelectorAll(".msg-campo").forEach(function (msg) {
     msg.textContent = "";
