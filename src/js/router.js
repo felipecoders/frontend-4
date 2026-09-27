@@ -1,3 +1,4 @@
+import { pathDaUrl, urlDaRota } from "./base.js";
 import { restaurarCadastro } from "./cadastro.js";
 import { aplicarMascaras } from "./mascaras.js";
 import { preencherTemplates } from "./templates.js";
@@ -20,7 +21,7 @@ var rotas = {
 };
 
 function rotaAtual() {
-  var path = location.pathname.replace(/\/$/, "") || "/";
+  var path = pathDaUrl(location.pathname);
   return rotas[path] ? path : "/";
 }
 
@@ -56,13 +57,13 @@ export function render(opcoes) {
 }
 
 export function navegar(path) {
-  var atual = location.pathname.replace(/\/$/, "") || "/";
-  var alvo = String(path || "/").replace(/\/$/, "") || "/";
-  if (atual === alvo) {
+  var alvo = pathDaUrl(path);
+  var dest = urlDaRota(alvo);
+  if (rotaAtual() === alvo && pathDaUrl(location.pathname) === alvo) {
     app.focus();
     return;
   }
-  history.pushState({ rota: alvo }, "", path);
+  history.pushState({ rota: alvo }, "", dest);
   render({ focar: true });
 }
 

@@ -75,4 +75,10 @@ Trabalho individual com GitFlow:
 - `release/*`: ajuste fino antes de produção; merge em `main` e `develop`
 - `hotfix/*`: correção urgente a partir de `main`
 
-Commits no padrão Conventional Commits (`chore`, `docs`, `chore(release)`). Versionamento semântico: a tag anotada `v1.0.0` em `main` é a primeira versão pública (`package.json` na `1.0.0`). Não há remote GitHub neste repositório.
+Commits no padrão Conventional Commits (`chore`, `docs`, `chore(release)`). Versionamento semântico: a tag anotada `v1.0.0` em `main` é a primeira versão pública (`package.json` na `1.0.0`).
+
+## Produção
+
+Publicado no GitHub Pages a partir da branch `main`:
+
+https://felipecoders.github.io/frontend-4/
