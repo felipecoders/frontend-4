@@ -18,5 +18,7 @@ document.body.addEventListener("click", function (event) {
 
 app.addEventListener("submit", onSubmit);
 app.addEventListener("input", onInput);
-window.addEventListener("popstate", render);
+window.addEventListener("popstate", function () {
+  render({ focar: true });
+});
 render();

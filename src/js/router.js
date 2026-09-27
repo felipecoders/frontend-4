@@ -34,7 +34,7 @@ function atualizarNav(rota) {
   });
 }
 
-export function render() {
+export function render(opcoes) {
   if (!app) {
     return;
   }
@@ -49,13 +49,21 @@ export function render() {
 
   document.title = view.title;
   atualizarNav(rotaAtual());
+
+  if (opcoes && opcoes.focar) {
+    app.focus();
+  }
 }
 
 export function navegar(path) {
-  if (location.pathname !== path) {
-    history.pushState({ rota: path }, "", path);
+  var atual = location.pathname.replace(/\/$/, "") || "/";
+  var alvo = String(path || "/").replace(/\/$/, "") || "/";
+  if (atual === alvo) {
+    app.focus();
+    return;
   }
-  render();
+  history.pushState({ rota: alvo }, "", path);
+  render({ focar: true });
 }
 
 export function getApp() {
