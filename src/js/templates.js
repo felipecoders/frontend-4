@@ -1,11 +1,13 @@
 import { ATIVIDADES, CONTATOS, PROJETOS } from "./dados.js";
 
 function cardProjeto(projeto) {
-  return `<article>
-    <h3>${projeto.titulo}</h3>
-    <p>${projeto.descricao}</p>
-    <img src="${projeto.imagem}" alt="${projeto.alt}">
-  </article>`;
+  return `<li>
+    <article>
+      <h3>${projeto.titulo}</h3>
+      <p>${projeto.descricao}</p>
+      <img src="${projeto.imagem}" alt="${projeto.alt}" width="${projeto.largura}" height="${projeto.altura}" sizes="(max-width: 640px) 100vw, 640px" loading="lazy" decoding="async">
+    </article>
+  </li>`;
 }
 
 export function preencherTemplates() {

@@ -1,3 +1,4 @@
+import { pathDaUrl, urlDaRota } from "./base.js";
 import { restaurarCadastro } from "./cadastro.js";
 import { aplicarMascaras } from "./mascaras.js";
 import { preencherTemplates } from "./templates.js";
@@ -20,7 +21,7 @@ var rotas = {
 };
 
 function rotaAtual() {
-  var path = location.pathname.replace(/\/$/, "") || "/";
+  var path = pathDaUrl(location.pathname);
   return rotas[path] ? path : "/";
 }
 
@@ -34,7 +35,7 @@ function atualizarNav(rota) {
   });
 }
 
-export function render() {
+export function render(opcoes) {
   if (!app) {
     return;
   }
@@ -49,13 +50,21 @@ export function render() {
 
   document.title = view.title;
   atualizarNav(rotaAtual());
+
+  if (opcoes && opcoes.focar) {
+    app.focus();
+  }
 }
 
 export function navegar(path) {
-  if (location.pathname !== path) {
-    history.pushState({ rota: path }, "", path);
+  var alvo = pathDaUrl(path);
+  var dest = urlDaRota(alvo);
+  if (rotaAtual() === alvo && pathDaUrl(location.pathname) === alvo) {
+    app.focus();
+    return;
   }
-  render();
+  history.pushState({ rota: alvo }, "", dest);
+  render({ focar: true });
 }
 
 export function getApp() {

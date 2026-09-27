@@ -4,23 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ONG Esperança Viva - Página Inicial</title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
 
+  <a class="skip-link" href="#app">Ir para o conteúdo</a>
+
   <header>
-    <img src="/imagens/logo.svg" alt="Logotipo da ONG Esperança Viva">
+    <img src="imagens/logo.svg" alt="Logotipo da ONG Esperança Viva" width="160" height="64">
     <h1>ONG Esperança Viva</h1>
-    <nav>
+    <nav aria-label="Principal">
       <ul>
-        <li><a href="/" data-route="/">Início</a></li>
-        <li><a href="/projetos" data-route="/projetos">Projetos</a></li>
-        <li><a href="/cadastro" data-route="/cadastro">Cadastre-se / Doar</a></li>
+        <li><a href="./" data-route="/">Início</a></li>
+        <li><a href="projetos" data-route="/projetos">Projetos</a></li>
+        <li><a href="cadastro" data-route="/cadastro">Cadastre-se / Doar</a></li>
       </ul>
     </nav>
+    <button type="button" id="btn-alto-contraste" aria-pressed="false">Alto contraste</button>
   </header>
 
-  <main id="app"></main>
+  <main id="app" aria-label="Conteúdo da página" tabindex="-1"></main>
 
   <footer>
     <p>&copy; 2026 ONG Esperança Viva. Todos os direitos reservados.</p>
@@ -30,7 +33,7 @@
     <section id="sobre">
       <h2>Sobre a ONG</h2>
       <p>Nossa missão é transformar vidas por meio da inclusão social, educação e projetos comunitários nas regiões periféricas.</p>
-      <img src="/imagens/apresentacao.svg" alt="Voluntários da ONG sorrindo e trabalhando em uma ação comunitária ao ar livre">
+      <img src="imagens/apresentacao.svg" alt="Voluntários da ONG sorrindo e trabalhando em uma ação comunitária ao ar livre" width="640" height="280" sizes="(max-width: 640px) 100vw, 640px" loading="lazy" decoding="async">
     </section>
 
     <section id="contato">
@@ -41,7 +44,7 @@
   </template>
 
   <template id="view-projetos">
-    <h1>Frentes de Atuação e Iniciativas</h1>
+    <h2>Frentes de Atuação e Iniciativas</h2>
 
     <section id="voluntariado">
       <h2>Programa de Voluntariado</h2>
@@ -49,7 +52,7 @@
         <h3>Como Participar</h3>
         <p>Procuramos pessoas engajadas para atuar em oficinas educativas, apoio logístico e atendimento à comunidade.</p>
         <ul id="lista-atividades"></ul>
-        <p><a href="/cadastro" data-route="/cadastro">Clique aqui para se inscrever como voluntário</a></p>
+        <p><a href="cadastro" data-route="/cadastro">Clique aqui para se inscrever como voluntário</a></p>
       </article>
     </section>
 
@@ -59,18 +62,18 @@
         <h3>Contribuição Financeira</h3>
         <p>Sua doação garante a continuidade dos nossos projetos diários e a compra de suprimentos básicos.</p>
         <p>Aceitamos contribuições pontuais via PIX ou assinaturas mensais recorrentes.</p>
-        <p><a href="/cadastro" data-route="/cadastro">Fazer uma Doação Agora</a></p>
+        <p><a href="cadastro" data-route="/cadastro">Fazer uma Doação Agora</a></p>
       </article>
     </section>
 
     <section id="projetos-ativos">
       <h2>Projetos Sociais Ativos</h2>
-      <div id="lista-projetos"></div>
+      <ul id="lista-projetos" aria-label="Projetos sociais ativos"></ul>
     </section>
   </template>
 
   <template id="view-cadastro">
-    <h1>Formulário de Cadastro e Colaboração</h1>
+    <h2>Formulário de Cadastro e Colaboração</h2>
 
     <form id="form-cadastro" action="#" method="post" novalidate>
       <fieldset>
@@ -78,32 +81,32 @@
 
         <p>
           <label for="nome">Nome Completo:</label><br>
-          <input type="text" id="nome" name="nome" required minlength="3">
-          <span class="msg-campo" data-erro="nome"></span>
+          <input type="text" id="nome" name="nome" required minlength="3" aria-describedby="erro-nome">
+          <span id="erro-nome" class="msg-campo" data-erro="nome"></span>
         </p>
 
         <p>
           <label for="email">E-mail:</label><br>
-          <input type="email" id="email" name="email" required placeholder="exemplo@email.com">
-          <span class="msg-campo" data-erro="email"></span>
+          <input type="email" id="email" name="email" required placeholder="exemplo@email.com" aria-describedby="erro-email">
+          <span id="erro-email" class="msg-campo" data-erro="email"></span>
         </p>
 
         <p>
           <label for="cpf">CPF:</label><br>
-          <input type="text" id="cpf" name="cpf" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" maxlength="14" placeholder="000.000.000-00">
-          <span class="msg-campo" data-erro="cpf"></span>
+          <input type="text" id="cpf" name="cpf" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" maxlength="14" placeholder="000.000.000-00" aria-describedby="erro-cpf">
+          <span id="erro-cpf" class="msg-campo" data-erro="cpf"></span>
         </p>
 
         <p>
           <label for="data_nascimento">Data de Nascimento:</label><br>
-          <input type="date" id="data_nascimento" name="data_nascimento" required>
-          <span class="msg-campo" data-erro="data_nascimento"></span>
+          <input type="date" id="data_nascimento" name="data_nascimento" required aria-describedby="erro-data_nascimento">
+          <span id="erro-data_nascimento" class="msg-campo" data-erro="data_nascimento"></span>
         </p>
 
         <p>
           <label for="telefone">Telefone / Celular:</label><br>
-          <input type="tel" id="telefone" name="telefone" required pattern="\(\d{2}\)\s?\d{4,5}-\d{4}" maxlength="15" placeholder="(11) 99999-9999">
-          <span class="msg-campo" data-erro="telefone"></span>
+          <input type="tel" id="telefone" name="telefone" required pattern="\(\d{2}\)\s?\d{4,5}-\d{4}" maxlength="15" placeholder="(11) 99999-9999" aria-describedby="erro-telefone">
+          <span id="erro-telefone" class="msg-campo" data-erro="telefone"></span>
         </p>
       </fieldset>
 
@@ -114,33 +117,33 @@
 
         <p>
           <label for="cep">CEP:</label><br>
-          <input type="text" id="cep" name="cep" required pattern="\d{5}-\d{3}" maxlength="9" placeholder="00000-000">
-          <span class="msg-campo" data-erro="cep"></span>
+          <input type="text" id="cep" name="cep" required pattern="\d{5}-\d{3}" maxlength="9" placeholder="00000-000" aria-describedby="erro-cep">
+          <span id="erro-cep" class="msg-campo" data-erro="cep"></span>
         </p>
 
         <p>
           <label for="logradouro">Rua / Logradouro:</label><br>
-          <input type="text" id="logradouro" name="logradouro" required>
-          <span class="msg-campo" data-erro="logradouro"></span>
+          <input type="text" id="logradouro" name="logradouro" required aria-describedby="erro-logradouro">
+          <span id="erro-logradouro" class="msg-campo" data-erro="logradouro"></span>
         </p>
 
         <p>
           <label for="cidade">Cidade:</label><br>
-          <input type="text" id="cidade" name="cidade" required>
-          <span class="msg-campo" data-erro="cidade"></span>
+          <input type="text" id="cidade" name="cidade" required aria-describedby="erro-cidade">
+          <span id="erro-cidade" class="msg-campo" data-erro="cidade"></span>
         </p>
 
         <p>
           <label for="estado">Estado (UF):</label><br>
-          <input type="text" id="estado" name="estado" maxlength="2" required placeholder="SP">
-          <span class="msg-campo" data-erro="estado"></span>
+          <input type="text" id="estado" name="estado" maxlength="2" required placeholder="SP" aria-describedby="erro-estado">
+          <span id="erro-estado" class="msg-campo" data-erro="estado"></span>
         </p>
       </fieldset>
 
       <br>
 
       <button type="submit">Enviar Cadastro</button>
-      <p id="status-cadastro" hidden>Cadastro recebido.</p>
+      <p id="status-cadastro" role="status" aria-live="polite" hidden>Cadastro recebido.</p>
     </form>
 
     <h2>Cadastros nesta sessão</h2>
@@ -148,6 +151,6 @@
   </template>
 
   <script src="https://unpkg.com/imask@7/dist/imask.min.js"></script>
-  <script type="module" src="/js/app.js"></script>
+  <script type="module" src="../js/app.js"></script>
 </body>
 </html>

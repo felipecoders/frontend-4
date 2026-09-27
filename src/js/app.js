@@ -1,5 +1,6 @@
 import { onInput, onSubmit } from "./cadastro.js";
 import { getApp, navegar, render } from "./router.js";
+import { iniciarTema } from "./tema.js";
 
 var app = getApp();
 if (!app) {
@@ -13,10 +14,13 @@ document.body.addEventListener("click", function (event) {
   }
 
   event.preventDefault();
-  navegar(link.getAttribute("href"));
+  navegar(link.getAttribute("data-route") || link.getAttribute("href"));
 });
 
 app.addEventListener("submit", onSubmit);
 app.addEventListener("input", onInput);
-window.addEventListener("popstate", render);
+window.addEventListener("popstate", function () {
+  render({ focar: true });
+});
+iniciarTema();
 render();
