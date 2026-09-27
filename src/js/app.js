@@ -14,7 +14,7 @@ document.body.addEventListener("click", function (event) {
   }
 
   event.preventDefault();
-  navegar(link.getAttribute("href"));
+  navegar(link.getAttribute("data-route") || link.getAttribute("href"));
 });
 
 app.addEventListener("submit", onSubmit);
