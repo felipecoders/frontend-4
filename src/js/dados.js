@@ -17,6 +17,8 @@ export const PROJETOS = [
       "Atendemos mais de 200 crianças no contraturno escolar com atividades esportivas e culturais.",
     imagem: "/imagens/projeto-voluntariado.svg",
     alt: "Voluntários entregando alimentos e materiais educativos para famílias atendidas",
+    largura: 640,
+    altura: 280,
   },
   {
     titulo: "Horta comunitária",
@@ -24,6 +26,8 @@ export const PROJETOS = [
       "Captação para irrigação e insumos em regiões periféricas, com mutirões mensais de voluntários.",
     imagem: "/imagens/apresentacao.svg",
     alt: "Voluntários da ONG em ação comunitária ao ar livre",
+    largura: 640,
+    altura: 280,
   },
   {
     titulo: "Rede de doações emergentes",
@@ -31,5 +35,7 @@ export const PROJETOS = [
       "Organização de campanhas pontuais de cestas e materiais escolares para famílias em situação de urgência.",
     imagem: "/imagens/logo.svg",
     alt: "Logotipo da ONG Esperança Viva",
+    largura: 160,
+    altura: 64,
   },
 ];
