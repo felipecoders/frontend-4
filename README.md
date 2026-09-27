@@ -11,19 +11,18 @@ A aplicação é uma Single Page Application. O shell fica em `src/html/index.ht
 - HTML e CSS para marcação e apresentação
 - JavaScript (ES modules) para rotas, formulário, validação e `localStorage`
 - Node.js (`http`, `fs`, `path`) em `src/server.js` para servir ficheiros e o fallback da SPA
-
-Não há framework, bundler nem dependências npm.
+- Vite (devDependency) para bundle e minificação de HTML, CSS e JS
 
 ## Pré-requisitos
 
 - Node.js (testado com a v24)
-- npm (vem com o Node; neste projeto não instala pacotes)
+- npm (vem com o Node)
 
 ## Instalação
 
 1. Copie ou clone este repositório.
 2. Abra a pasta raiz (onde está o `package.json`).
-3. Não é necessário `npm install`: o `package.json` não declara `dependencies`.
+3. Corra `npm install` para obter o Vite.
 
 ## Execução
 
@@ -50,16 +49,21 @@ src/
   js/         app, router, cadastro, validação, storage
   imagens/    SVG da ONG
   server.js   servidor HTTP na porta 5500
-package.json  script start e versão SemVer
+package.json  scripts start/build e versão SemVer
+vite.config.js  input do shell e outDir dist
 ```
 
 ## Build e testes
 
-Nesta etapa não há build de produção (sem minificação nem bundler). Também não há suite automatizada.
+```bash
+npm run build
+```
 
-Verificação manual: subir o servidor e abrir as três rotas. O servidor deve devolver o shell (HTTP 200) e os estáticos em `/css`, `/js` e `/imagens`.
+O Vite (esbuild) minifica o shell, o CSS e os módulos JS para `dist/`. O IMask continua no CDN. Não há suite automatizada.
 
-Build, otimização e deploy entram na etapa seguinte da experiência prática.
+Depois da build, `npm start` serve o HTML e os assets de `dist/` quando a pasta existe. Sem `dist/`, o servidor usa os ficheiros de `src/`.
+
+Verificação: abrir `/`, `/projetos` e `/cadastro`. Imagens continuam em `/imagens`.
 
 ## Versionamento
 
